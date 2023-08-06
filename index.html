@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <!--=============== REMIX ICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+        <title>potato plant</title>
+    </head>
+    <body>
+        <!--==================== HEADER ====================-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">
+                    <i class="ri-leaf-line nav__logo-icon"></i> Potatix
+                </a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link active-link">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#disease" class="nav__link">Disease</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#prediction" class="nav__link">Diagnosis</a>
+                        </li>
+                    </ul>
+
+                    <div class="nav__close" id="nav-close">
+                        <i class="ri-close-line"></i>
+                    </div>
+                </div>
+
+                <div class="nav__btns">
+                    <!-- Theme change button -->
+                    <i class="ri-moon-line change-theme" id="theme-button"></i>
+
+                    <div class="nav__toggle" id="nav-toggle">
+                        <i class="ri-menu-line"></i>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="main">
+            <!--==================== HOME ====================-->
+            <section class="home" id="home">
+                <div class="home__container container grid">
+                    <img src="assets/img/po1.png" alt="" class="home__img">
+
+                    <div class="home__data">
+                        <h1 class="home__title">
+                            Plants will make <br> your life better
+                        </h1>
+                        <p class="home__description">
+                            Identify pests, potato disease, and more with our potato leaf diseases diagnosis. POTATIX is Potato Health Assessment uses machine learning to identify potato health problems from photos.
+                        </p>
+                        <a href="#prediction" class="button button--flex">
+                            Diagnosis <i class="ri-arrow-right-down-line button__icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="home__social">
+                        <span class="home__social-follow">Follow Us</span>
+
+                        <div class="home__social-links">
+                            <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" class="home__social-link">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+
+            <!--==================== Disease ====================-->
+            <section class="steps section container" id="disease">
+                <div class="steps__bg">
+                    <h2 class="section__title-center steps__title">
+                        Types of Disease
+                    </h2>
+
+                    <div class="steps__container grid">
+                        <div class="steps__card">
+                            <div class="steps__card-number">01</div>
+                            <h3 class="steps__card-title">Early Blight</h3>
+                            <p class="steps__card-description">
+                                Early blight is primarily a disease of stressed or senescing plants. Symptoms appear first on the oldest foliage.
+                            </p>
+                        </div>
+
+                        <div class="steps__card">
+                            <div class="steps__card-number">02</div>
+                            <h3 class="steps__card-title">Late Blight</h3>
+                            <p class="steps__card-description">
+                                Late blight is controlled by eliminating cull piles and volunteer potatoes, using proper harvesting and storage practices, and applying fungicides when necessary.
+                            </p>
+                        </div>
+
+                        <div class="steps__card">
+                            <div class="steps__card-number">03</div>
+                            <h3 class="steps__card-title">Healthy</h3>
+                            <p class="steps__card-description">
+                                They're rich in vitamin C, which is an antioxidant. Potatoes were a life-saving food source in early times because the vitamin C prevented scurvy. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--==================== Prediction ====================-->
+            <section class="about section container" id="prediction">
+                <div class="about__container grid">
+                    <img src="assets/img/about.png" alt="" class="about__img">
+
+                    <div class="about__data">
+                        <h2 class="section__title about__title">
+                            Diagnosis
+                        </h2>
+
+                        <p class="about__description">
+                            Drag and drop the image
+                        </p>
+
+                        <div class="about__details">
+                            <Grid item xs={12}>
+                                <Card className={`${classes.imageCard} ${!image ? classes.imageCardEmpty : ''}`}>
+                                  {image && <CardActionArea>
+                                    <CardMedia
+                                      className={classes.media}
+                                      image={preview}
+                                      component="image"
+                                      title="Contemplative Reptile"
+                                    />
+                                  </CardActionArea>
+                                  }
+                                  {!image && <CardContent className={classes.content}>
+                                    <DropzoneArea
+                                      acceptedFiles={['image/*']}
+                                      dropzoneText={"Drag and drop an image of a potato plant leaf to process"}
+                                      onChange={onSelectFile}
+                                    />
+                                  </CardContent>}
+                                  {data && <CardContent className={classes.detail}>
+                                    <TableContainer component={Paper} className={classes.tableContainer}>
+                                      <Table className={classes.table} size="small" aria-label="simple table">
+                                        <TableHead className={classes.tableHead}>
+                                          <TableRow className={classes.tableRow}>
+                                            <TableCell className={classes.tableCell1}>Label:</TableCell>
+                                            <TableCell align="right" className={classes.tableCell1}>Confidence:</TableCell>
+                                          </TableRow>
+                                        </TableHead>
+                                        <TableBody className={classes.tableBody}>
+                                          <TableRow className={classes.tableRow}>
+                                            <TableCell component="th" scope="row" className={classes.tableCell}>
+                                              {data.class}
+                                            </TableCell>
+                                            <TableCell align="right" className={classes.tableCell}>{confidence}%</TableCell>
+                                          </TableRow>
+                                        </TableBody>
+                                      </Table>
+                                    </TableContainer>
+                                  </CardContent>}
+                                  {isLoading && <CardContent className={classes.detail}>
+                                    <CircularProgress color="secondary" className={classes.loader} />
+                                    <Typography className={classes.title} variant="h6" noWrap>
+                                      Processing
+                                    </Typography>
+                                  </CardContent>}
+                                </Card>
+                              </Grid>
+                           
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--==================== CONTACT ====================-->
+            <section class="contact section container" id="contact">                
+                <div class="contact__container grid">
+                    <div class="contact__box">
+                        <h2 class="section__title">
+                            Reach out to us today <br> via any of the given <br> information
+                        </h2>
+
+                        <div class="contact__data">
+                            <div class="contact__information">
+                                <h3 class="contact__subtitle">Call us for instant support</h3>
+                                <span class="contact__description">
+                                    <i class="ri-phone-line contact__icon"></i>
+                                    +977 9800000000
+                                </span>
+                            </div>
+
+                            <div class="contact__information">
+                                <h3 class="contact__subtitle">Write us by mail</h3>
+                                <span class="contact__description">
+                                    <i class="ri-mail-line contact__icon"></i>
+                                    potatix@email.com
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form action="" class="contact__form">
+                        <div class="contact__inputs">
+                            <div class="contact__content">
+                                <input type="email" placeholder=" " class="contact__input">
+                                <label for="" class="contact__label">Email</label>
+                            </div>
+
+                            <div class="contact__content">
+                                <input type="text" placeholder=" " class="contact__input">
+                                <label for="" class="contact__label">Subject</label>
+                            </div>
+s
+                            <div class="contact__content contact__area">
+                                <textarea name="message" placeholder=" " class="contact__input"></textarea>                              
+                                <label for="" class="contact__label">Message</label>
+                            </div>
+                        </div>
+
+                        <button class="button button--flex">
+                            Send Message
+                            <i class="ri-arrow-right-up-line button__icon"></i>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <!--==================== FOOTER ====================-->
+        <footer class="footer section">
+            <div class="footer__container container grid">
+                <div class="footer__content">
+
+                    <h3 class="footer__title">
+                        Subscribe to our newsletter <br> to stay update
+                    </h3>
+
+                    <div class="footer__subscribe">
+                        <input type="email" placeholder="Enter your email" class="footer__input">
+
+                        <button class="button button--flex footer__button">
+                            Subscribe
+                            <i class="ri-arrow-right-up-line button__icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        
+        <!--=============== SCROLL UP ===============-->
+        <a href="#" class="scrollup" id="scroll-up"> 
+            <i class="ri-arrow-up-fill scrollup__icon"></i>
+        </a>
+
+        <!--=============== SCROLL REVEAL ===============-->
+        <script src="assets/js/scrollreveal.min.js"></script>
+        
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
