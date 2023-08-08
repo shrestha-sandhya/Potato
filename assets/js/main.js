@@ -140,3 +140,16 @@ sr.reveal(`.home__social`, {delay: 600})
 sr.reveal(`.about__img, .contact__box`,{origin: 'left'})
 sr.reveal(`.about__data, .contact__form`,{origin: 'right'})
 sr.reveal(`.steps__card, .product__card, .questions__group, .footer`,{interval: 100})
+
+/*=============== DRAG AND DROP ===============*/
+const dropArea = document.getElementById("drop_area");
+const inputFile = document.getElementById("input-file");
+const imageView = document.getElementById("img-view");
+
+inputFile.addEventListener("change", uploadImage);
+
+function uploadImage(){
+    let imgLink = URL.createObjectURL(inputFile.files[0]);
+    imageView.style.backgroundImage = 'url(${imgLink})';
+    imageView.textContent = "";
+}
